@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 export default function Header() {
   const [darkMode, setDarkMode] = useState(false)
+  const [menuAbierto, setMenuAbierto] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem('darkMode')
@@ -22,7 +23,7 @@ export default function Header() {
 
   return (
     <header style={{
-      padding: '1rem 2.5rem',
+      padding: '1rem 1.25rem',
       borderBottom: '0.5px solid var(--borde)',
       display: 'flex',
       alignItems: 'center',
@@ -43,43 +44,25 @@ export default function Header() {
         </span>
       </a>
 
-      <nav style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-        <a href="/" style={{
-          fontSize: '14px',
-          color: 'var(--texto-suave)',
-          textDecoration: 'none',
-          fontWeight: '600',
-        }}>
-          Juegos
-        </a>
-        <a href="#" style={{
-          fontSize: '14px',
-          color: 'var(--texto-suave)',
-          textDecoration: 'none',
-          fontWeight: '600',
-        }}>
-          Ranking
-        </a>
-        <a href="#" style={{
-          fontSize: '14px',
-          color: 'var(--texto-suave)',
-          textDecoration: 'none',
-          fontWeight: '600',
-        }}>
-          Novedades
-        </a>
+      {/* Desktop nav */}
+      <nav style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '2rem',
+      }}
+        className="desktop-nav"
+      >
+        <a href="/" style={{ fontSize: '14px', color: 'var(--texto-suave)', textDecoration: 'none', fontWeight: '600' }}>Juegos</a>
+        <a href="#" style={{ fontSize: '14px', color: 'var(--texto-suave)', textDecoration: 'none', fontWeight: '600' }}>Ranking</a>
+        <a href="#" style={{ fontSize: '14px', color: 'var(--texto-suave)', textDecoration: 'none', fontWeight: '600' }}>Novedades</a>
         <button
           onClick={toggleDark}
-          title={darkMode ? 'Modo claro' : 'Modo oscuro'}
           style={{
             background: 'var(--bg-secondary)',
             border: '0.5px solid var(--borde)',
             borderRadius: '20px',
             padding: '6px 14px',
             cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
             fontSize: '13px',
             color: 'var(--texto-suave)',
             fontFamily: "'Nunito', sans-serif",
@@ -89,6 +72,65 @@ export default function Header() {
           {darkMode ? '☀️ Claro' : '🌙 Oscuro'}
         </button>
       </nav>
+
+      {/* Mobile — solo toggle oscuro y hamburguesa */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+        className="mobile-nav"
+      >
+        <button
+          onClick={toggleDark}
+          style={{
+            background: 'var(--bg-secondary)',
+            border: '0.5px solid var(--borde)',
+            borderRadius: '20px',
+            padding: '6px 12px',
+            cursor: 'pointer',
+            fontSize: '13px',
+            color: 'var(--texto-suave)',
+            fontFamily: "'Nunito', sans-serif",
+            fontWeight: '600',
+          }}
+        >
+          {darkMode ? '☀️' : '🌙'}
+        </button>
+        <button
+          onClick={() => setMenuAbierto(!menuAbierto)}
+          style={{
+            background: 'none',
+            border: '0.5px solid var(--borde)',
+            borderRadius: '10px',
+            padding: '6px 10px',
+            cursor: 'pointer',
+            fontSize: '18px',
+            color: 'var(--texto)',
+          }}
+        >
+          {menuAbierto ? '✕' : '☰'}
+        </button>
+      </div>
+
+      {/* Menu mobile desplegable */}
+      {menuAbierto && (
+        <div style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          background: 'var(--bg-primary)',
+          borderBottom: '0.5px solid var(--borde)',
+          padding: '1rem 1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+          zIndex: 99,
+        }}
+          className="mobile-menu"
+        >
+          <a href="/" style={{ fontSize: '15px', color: 'var(--texto)', textDecoration: 'none', fontWeight: '600' }}>Juegos</a>
+          <a href="#" style={{ fontSize: '15px', color: 'var(--texto)', textDecoration: 'none', fontWeight: '600' }}>Ranking</a>
+          <a href="#" style={{ fontSize: '15px', color: 'var(--texto)', textDecoration: 'none', fontWeight: '600' }}>Novedades</a>
+        </div>
+      )}
     </header>
   )
 }

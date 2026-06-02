@@ -5,14 +5,8 @@ export default function Home() {
     <div style={{ background: 'var(--bg-primary)', minHeight: '100vh' }}>
 
       {/* Hero */}
-      <div style={{
-        padding: '4rem 2.5rem 3rem',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '3rem',
-        alignItems: 'center',
-        borderBottom: '0.5px solid var(--borde)',
-      }}>
+      <div className="hero-grid">
+
         {/* Izquierda */}
         <div>
           <div style={{
@@ -31,14 +25,7 @@ export default function Home() {
           }}>
             📍 100% argentino
           </div>
-          <h1 style={{
-            fontFamily: "'Archivo Black', sans-serif",
-            fontSize: '42px',
-            lineHeight: '1.05',
-            color: 'var(--texto)',
-            marginBottom: '16px',
-            letterSpacing: '-2px',
-          }}>
+          <h1 className="hero-titulo">
             La cultura<br />
             argentina<br />
             hecha{' '}
@@ -54,7 +41,7 @@ export default function Home() {
             Desafíos diarios de música, historia, geografía y cultura popular.
             Todo con sabor bien de acá. Un juego nuevo cada día.
           </p>
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <div className="hero-btns">
             <a href="/versito" style={{
               background: 'var(--amarillo)',
               color: 'var(--marino)',
@@ -84,7 +71,7 @@ export default function Home() {
         </div>
 
         {/* Derecha — mini cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <div className="hero-cards">
           {[
             { nombre: 'Versito', desc: 'Adiviná la canción por su letra', activo: true },
             { nombre: 'Sopa Argentina', desc: 'Sopa de letras temática diaria', activo: false },
@@ -148,7 +135,7 @@ export default function Home() {
       </div>
 
       {/* Grilla de juegos */}
-      <div style={{ padding: '2.5rem' }}>
+      <div className="juegos-section">
         <div style={{
           display: 'flex',
           alignItems: 'flex-start',
@@ -181,11 +168,7 @@ export default function Home() {
           </span>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '12px',
-        }}>
+        <div className="juegos-grid">
           {[
             { emoji: '🎵', nombre: 'Versito', desc: 'Adiviná la canción argentina por fragmento de letra', activo: true, href: '/versito' },
             { emoji: '🧩', nombre: 'Sopa Argentina', desc: 'Sopa de letras con temáticas rotativas', activo: false },

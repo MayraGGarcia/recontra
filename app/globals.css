@@ -44,3 +44,115 @@ body.dark {
   --borde: #1E3448;
   --celeste-suave: #1A3A4A;
 }
+
+.desktop-nav {
+  display: flex;
+}
+.mobile-nav {
+  display: none;
+}
+.mobile-menu {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+  .mobile-nav {
+    display: flex;
+  }
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem 2.5rem 3rem;
+}
+
+.juegos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem;
+    gap: 1.5rem;
+  }
+  .juegos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Hero */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 4rem 2.5rem 3rem;
+  border-bottom: 0.5px solid var(--borde);
+}
+
+.hero-titulo {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 42px;
+  line-height: 1.05;
+  color: var(--texto);
+  margin-bottom: 16px;
+  letter-spacing: -2px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Juegos */
+.juegos-section {
+  padding: 2.5rem;
+}
+
+.juegos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem;
+    gap: 1.5rem;
+  }
+
+  .hero-titulo {
+    font-size: 32px;
+  }
+
+  .hero-cards {
+    display: none;
+  }
+
+  .juegos-section {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .juegos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
