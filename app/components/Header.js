@@ -33,6 +33,8 @@ export default function Header() {
       top: 0,
       zIndex: 100,
     }}>
+
+      {/* Logo */}
       <a href="/" style={{ textDecoration: 'none' }}>
         <span style={{
           fontFamily: "'Archivo Black', sans-serif",
@@ -44,14 +46,8 @@ export default function Header() {
         </span>
       </a>
 
-      {/* Desktop nav */}
-      <nav style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '2rem',
-      }}
-        className="desktop-nav"
-      >
+      {/* Nav desktop */}
+      <nav className="header-desktop">
         <a href="/" style={{ fontSize: '14px', color: 'var(--texto-suave)', textDecoration: 'none', fontWeight: '600' }}>Juegos</a>
         <a href="#" style={{ fontSize: '14px', color: 'var(--texto-suave)', textDecoration: 'none', fontWeight: '600' }}>Ranking</a>
         <a href="#" style={{ fontSize: '14px', color: 'var(--texto-suave)', textDecoration: 'none', fontWeight: '600' }}>Novedades</a>
@@ -73,10 +69,8 @@ export default function Header() {
         </button>
       </nav>
 
-      {/* Mobile — solo toggle oscuro y hamburguesa */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
-        className="mobile-nav"
-      >
+      {/* Nav mobile — solo dos botones */}
+      <div className="header-mobile">
         <button
           onClick={toggleDark}
           style={{
@@ -85,10 +79,8 @@ export default function Header() {
             borderRadius: '20px',
             padding: '6px 12px',
             cursor: 'pointer',
-            fontSize: '13px',
-            color: 'var(--texto-suave)',
-            fontFamily: "'Nunito', sans-serif",
-            fontWeight: '600',
+            fontSize: '16px',
+            lineHeight: 1,
           }}
         >
           {darkMode ? '☀️' : '🌙'}
@@ -103,13 +95,14 @@ export default function Header() {
             cursor: 'pointer',
             fontSize: '18px',
             color: 'var(--texto)',
+            lineHeight: 1,
           }}
         >
           {menuAbierto ? '✕' : '☰'}
         </button>
       </div>
 
-      {/* Menu mobile desplegable */}
+      {/* Menu desplegable mobile */}
       {menuAbierto && (
         <div style={{
           position: 'absolute',
@@ -123,14 +116,13 @@ export default function Header() {
           flexDirection: 'column',
           gap: '1rem',
           zIndex: 99,
-        }}
-          className="mobile-menu"
-        >
+        }}>
           <a href="/" style={{ fontSize: '15px', color: 'var(--texto)', textDecoration: 'none', fontWeight: '600' }}>Juegos</a>
           <a href="#" style={{ fontSize: '15px', color: 'var(--texto)', textDecoration: 'none', fontWeight: '600' }}>Ranking</a>
           <a href="#" style={{ fontSize: '15px', color: 'var(--texto)', textDecoration: 'none', fontWeight: '600' }}>Novedades</a>
         </div>
       )}
+
     </header>
   )
 }

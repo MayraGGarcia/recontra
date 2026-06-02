@@ -1,32 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito:wght@400;600;700&display=swap');
 
+/* ============================================
+   RESET
+============================================ */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: 'Nunito', sans-serif;
-  background-color: #F7FBFF;
-  color: #0D1F2D;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-body.dark {
-  background-color: #0D1F2D;
-  color: #E8F4FF;
-}
-
+/* ============================================
+   VARIABLES — MODO CLARO
+============================================ */
 :root {
-  /* Colores principales */
   --celeste: #4AADDB;
   --celeste-suave: #DAEEFA;
   --celeste-borde: #CDEAF9;
   --amarillo: #F5C842;
   --marino: #0D1F2D;
 
-  /* Modo claro */
   --bg-primary: #F7FBFF;
   --bg-secondary: #EAF6FD;
   --bg-card: #ffffff;
@@ -35,61 +27,47 @@ body.dark {
   --borde: #CDEAF9;
 }
 
+/* ============================================
+   VARIABLES — MODO OSCURO
+============================================ */
 body.dark {
+  --celeste-suave: #1A3A4A;
   --bg-primary: #0D1F2D;
   --bg-secondary: #152535;
   --bg-card: #152535;
   --texto: #E8F4FF;
   --texto-suave: #7AACBE;
   --borde: #1E3448;
-  --celeste-suave: #1A3A4A;
 }
 
-.desktop-nav {
+/* ============================================
+   BASE
+============================================ */
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--texto);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ============================================
+   HEADER
+============================================ */
+.header-desktop {
   display: flex;
-}
-.mobile-nav {
-  display: none;
-}
-.mobile-menu {
-  display: flex;
-}
-
-@media (max-width: 768px) {
-  .desktop-nav {
-    display: none;
-  }
-  .mobile-nav {
-    display: flex;
-  }
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
   align-items: center;
-  padding: 4rem 2.5rem 3rem;
+  gap: 2rem;
 }
 
-.juegos-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+.header-mobile {
+  display: none;
+  align-items: center;
+  gap: 8px;
 }
 
-@media (max-width: 768px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    padding: 2rem 1.25rem;
-    gap: 1.5rem;
-  }
-  .juegos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Hero */
+/* ============================================
+   HERO
+============================================ */
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -121,7 +99,9 @@ body.dark {
   gap: 10px;
 }
 
-/* Juegos */
+/* ============================================
+   JUEGOS
+============================================ */
 .juegos-section {
   padding: 2.5rem;
 }
@@ -132,26 +112,36 @@ body.dark {
   gap: 12px;
 }
 
-/* Mobile */
+/* ============================================
+   RESPONSIVE — MOBILE
+============================================ */
 @media (max-width: 768px) {
+
+  /* Header */
+  .header-desktop {
+    display: none;
+  }
+  .header-mobile {
+    display: flex;
+  }
+
+  /* Hero */
   .hero-grid {
     grid-template-columns: 1fr;
     padding: 2rem 1.25rem;
     gap: 1.5rem;
   }
-
   .hero-titulo {
     font-size: 32px;
   }
-
   .hero-cards {
     display: none;
   }
 
+  /* Juegos */
   .juegos-section {
     padding: 1.5rem 1.25rem;
   }
-
   .juegos-grid {
     grid-template-columns: repeat(2, 1fr);
   }
